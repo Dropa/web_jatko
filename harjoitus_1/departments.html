@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Harjoitus 1</title>
+    <link rel="stylesheet" href="includes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="includes/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+<nav class="navbar-static-top navbar-inverse">
+    <div class="container">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="employees.html">Työntekijät</a></li>
+                <li><a href="departments.html">Osastos</a>
+                <li><a href="projects.html">Projektit</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h3>Osastot</h3>
+    </div>
+
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+        <span class="glyphicon glyphicon-plus"></span> Uusi osasto
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Lisää uusi osasto</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>ID</th>
+                            <td><input type="text" class="form-control"/></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td><input type="text" class="form-control"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok"></span> Tallenna
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Peruuta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Modal -->
+
+    <input type="text" class="form-control" placeholder="Etsi..."/>
+
+    <table class="table table-responsive table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nimi</th>
+            <th>Toiminnot</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Näsät</td>
+            <td>
+                <button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Näytä</button>
+                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Muokkaa</button>
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> Poista</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Läsät</td>
+            <td>
+                <button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Näytä</button>
+                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Muokkaa</button>
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> Poista</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="includes/js/jquery.js"></script>
+<script src="includes/js/bootstrap.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Harjoitus 1</title>
+    <link rel="stylesheet" href="includes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="includes/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+<nav class="navbar-static-top navbar-inverse">
+    <div class="container">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="employees.html">Työntekijät</a></li>
+                <li><a href="departments.html">Osastos</a>
+                <li><a href="projects.html">Projektit</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h3>Työntekijät</h3>
+    </div>
+
+    <button type="button" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span> Uusi työntekijä
+    </button>
+    <input type="text" class="form-control" placeholder="Etsi..."/>
+
+    <table class="table table-responsive table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Etunimi</th>
+            <th>Sukunimi</th>
+            <th>Syntymäaika</th>
+            <th>Palkka</th>
+            <th>Puhelin</th>
+            <th>Toiminnot</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Matti</td>
+            <td>Meikä</td>
+            <td>1920-01-02</td>
+            <td>12309</td>
+            <td>0700123123</td>
+            <td>
+                <button class="btn btn-group btn-info"><span class="glyphicon glyphicon-eye-open"></span> Näytä</button>
+                <button class="btn btn-group btn-warning"><span class="glyphicon glyphicon-pencil"></span> Muokkaa</button>
+                <button class="btn btn-group btn-danger"><span class="glyphicon glyphicon-minus"></span> Poista</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Maija</td>
+            <td>Mäki</td>
+            <td>1940-03-03</td>
+            <td>1233</td>
+            <td>034092342</td>
+            <td>
+                <button class="btn btn-group btn-info"><span class="glyphicon glyphicon-eye-open"></span> Näytä</button>
+                <button class="btn btn-group btn-warning"><span class="glyphicon glyphicon-pencil"></span> Muokkaa</button>
+                <button class="btn btn-group btn-danger"><span class="glyphicon glyphicon-minus"></span> Poista</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="includes/js/jquery.js"></script>
+<script src="includes/js/bootstrap.js"></script>
+
+</body>
+</html>

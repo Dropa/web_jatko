@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="omaAppi">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular esimerkki</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="includes/app.js"></script>
+</head>
+<body ng-controller="bodyController">
+<input type="text" ng-model="omaKentta2">
+<button ng-click="lisaa()">Lisää</button>
+{{ omaKentta2 }}
+
+{{ tilanne }}
+
+<p ng-repeat="tyyppi in tiedot">{{tyyppi.nimi}}, {{tyyppi.ika}}</p>
+</body>
+</html>

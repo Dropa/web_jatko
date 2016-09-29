@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="tokaApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="ang2_3.js"></script>
+</head>
+<body ng-controller="appController">
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <input ng-model="newName" type="text" class="form-control" placeholder="Lisää uusi">
+                    <span class="input-group-btn">
+                        <button ng-click="addNewName(newName)" class="btn btn-success" type="button">Lisää</button>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        <tr ng-repeat="name in names">
+            <td ng-click="removeName($index)">
+                {{ name.name }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
