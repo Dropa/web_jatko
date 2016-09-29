@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="myApp.js"></script>
+</head>
+<body ng-controller="appController">
+<div class="container">
+    <div class="input-group">
+        <input ng-model="newSearch" type="text" class="form-control" placeholder="Hae nimellä">
+            <span class="input-group-btn">
+                <button ng-click="addNewSearch(newSearch)" class="btn btn-success" type="button">Hae</button>
+            </span>
+    </div>
+    <div ng-show="!!searches.length">
+        <h3>Nykyinen filtteri: <kbd>{{currentSearch}}</kbd></h3>
+    </div>
+    <div ng-show="!!searches.length">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="search in searches" ng-click="setSearch($index)">{{ search.search }}</li>
+        </ul>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th ng-repeat="header in headers">
+                <span ng-repeat="(key, value) in header">
+                    <span  ng-click="sortBy(key)">{{ value }}</span>
+                </span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in countries | filter : currentSearch | orderBy: sorts : reverse">
+            <td>{{ row.ID }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.population }}</td>
+            <td>{{ row.percentage }}%</td>
+            <td>{{ row.position }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
