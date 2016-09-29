@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+	<script src="myApp.js"></script>
+</head>
+<body ng-controller="appController">
+    <div class="container">
+		<div class="input-group">
+			<input ng-model="searchName" type="text" class="form-control" placeholder="Hae nimellä">
+		</div>
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th ng-repeat="header in headers">{{ header.label }}</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="row in countries | filter : searchName">
+				<td>{{ row.ID }}</td>
+				<td>{{ row.name }}</td>
+				<td>{{ row.population }}</td>
+				<td>{{ row.percentage }}</td>
+				<td>{{ row.position }}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
