@@ -18,7 +18,6 @@ myApp.controller("appController", function($scope, $http){
         $http.get(apiUrl + "/employees")
             .then(function(response) {
                 $scope.employees = response.data;
-                console.log($scope.employees);
             });
     };
     $scope.initDepartments = function () {
@@ -26,7 +25,6 @@ myApp.controller("appController", function($scope, $http){
             .then(function(response) {
                 //.data.data intentional
                 $scope.departments = response.data.data;
-                console.log($scope.departments);
             });
     };
     $scope.initProjects = function () {
@@ -34,7 +32,6 @@ myApp.controller("appController", function($scope, $http){
             .then(function(response) {
                 //.data.data intentional
                 $scope.projects = response.data.data;
-                console.log($scope.projects);
             });
     };
 
@@ -43,7 +40,6 @@ myApp.controller("appController", function($scope, $http){
             .then(function(response) {
                 //.data.data intentional
                 $scope.employee = response.data.data;
-                console.log($scope.employee);
             });
     };
     $scope.showDepartment = function (departmentId) {
@@ -56,7 +52,6 @@ myApp.controller("appController", function($scope, $http){
         $http.get(apiUrl + "/projectDetails/" + projectId)
             .then(function(response) {
                 $scope.project = response.data.data;
-                console.log($scope.project);
             });
     };
 });
