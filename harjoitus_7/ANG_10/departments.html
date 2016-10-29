@@ -1,0 +1,57 @@
+<div class="page-header" data-ng-init="initDepartments()">
+    <h3>Osastot</h3>
+</div>
+
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+    <span class="glyphicon glyphicon-plus"></span> Uusi osasto
+</button>
+
+<input type="text" class="form-control" placeholder="Etsi..."/>
+
+<table class="table table-responsive table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nimi</th>
+        <th>Toiminnot</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="department in departments">
+        <td>{{department.id}}</td>
+        <td>{{department.name}}</td>
+        <td>
+            <button type="button" class="btn btn-group btn-info" ng-click="showDepartment(department.id)" data-toggle="modal" data-target="#showDepartment">
+                <span class="glyphicon glyphicon-eye-open"></span> Näytä
+            </button>
+            <button class="btn btn-warning">
+                <span class="glyphicon glyphicon-pencil"></span> Muokkaa
+            </button>
+            <button class="btn btn-danger">
+                <span class="glyphicon glyphicon-minus"></span> Poista
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="showDepartment" tabindex="-1" role="dialog" aria-labelledby="Department">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Osasto</h4>
+            </div>
+            <div class="modal-body" id="employee-modal-body">
+                Api puuttuu :( Tarviitko erikseen detaili-ikkunan tuolle nimelle?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-ok"></span> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->

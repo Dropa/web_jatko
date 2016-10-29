@@ -32,7 +32,6 @@ myApp.controller("projectsController", function($scope, $http) {
 myApp.controller("appController", function($scope, $http){
 
     $scope.setEmployee = function(employee) {
-        console.log(employee);
         $scope.menuEmployee = employee.fname + " " + employee.lname;
     };
 
