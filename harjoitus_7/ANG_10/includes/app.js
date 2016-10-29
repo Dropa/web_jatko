@@ -18,7 +18,6 @@ myApp.controller("employeesController", function($scope, $http) {
     $scope.initEmployees = function () {
         $http.get($scope.apiUrl + "/employees")
             .then(function(response) {
-                console.log(response.data);
                 $scope.employees = response.data;
             });
     };
