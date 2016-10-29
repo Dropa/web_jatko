@@ -1,0 +1,69 @@
+<div class="page-header" data-ng-init="initEmployees()">
+    <h3>Työntekijät</h3>
+</div>
+
+<button type="button" class="btn btn-success">
+    <span class="glyphicon glyphicon-plus"></span> Uusi työntekijä
+</button>
+<input type="text" class="form-control" placeholder="Etsi..."/>
+<table class="table table-responsive table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Etunimi</th>
+        <th>Sukunimi</th>
+        <th>Osasto</th>
+        <th>Puhelin</th>
+        <th>Toiminnot</th>
+    </tr>
+    </thead>
+
+    <tbody id="tablebody">
+    <tr ng-repeat="employee in employees">
+        <td>{{employee.id}}</td>
+        <td>{{employee.fname}}</td>
+        <td>{{employee.lname}}</td>
+        <td>{{employee.dname}}</td>
+        <td>{{employee.phone1}}</td>
+        <td>
+            <button type="button" class="btn btn-group btn-info" data-toggle="modal" data-target="#showEmployee" ng-click="showEmployee(employee.id)">
+                <span class='glyphicon glyphicon-eye-open'></span> Näytä
+            </button>
+            <button class='btn btn-group btn-warning'>
+                <span class='glyphicon glyphicon-pencil'></span> Muokkaa
+            </button>
+            <button class='btn btn-group btn-danger'>
+                <span class='glyphicon glyphicon-minus'></span> Poista
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="showEmployee" tabindex="-1" role="dialog" aria-labelledby="Employee">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Työntekijä</h4>
+            </div>
+            <div class="modal-body" id="employee-modal-body">
+                <p><b>ID:</b> {{employee.id}}</p>
+                <p><b>Etunimi:</b> {{employee.fname}}</p>
+                <p><b>Sukunimi:</b> {{employee.lname}}</p>
+                <p><b>Osasto:</b> {{employee.dname}} ({{employee.dname}})</p>
+                <p><b>Syntymäpäivä:</b> {{employee.bday}}</p>
+                <p><b>E-mail:</b> {{employee.email}}</p>
+                <p><b>Palkka:</b> {{employee.salary}}</p>
+                <p><b>Puhelin 1:</b> {{employee.phone1}}</p>
+                <p><b>Puhelin 2:</b> {{employee.phone2}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-ok"></span> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->
