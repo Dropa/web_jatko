@@ -23,16 +23,14 @@ myApp.controller("employeesController", function($scope, $http) {
                 }
                 else {
                     $scope.resetEmployees();
+                    $scope.initEmployees();
                 }
             });
 
     };
 
     $scope.resetEmployees = function() {
-        $http.get("http://home.tamk.fi/~kujesa/webjatko/rest/reset.php")
-            .then(function(r) {
-                $scope.initEmployees();
-            });
+        $http.get("http://home.tamk.fi/~kujesa/webjatko/rest/reset.php");
     };
 
     $scope.showEmployee = function (employeeId) {
