@@ -18,7 +18,20 @@ myApp.controller("employeesController", function($scope, $http) {
     $scope.initEmployees = function () {
         $http.get($scope.apiUrl + "/employees")
             .then(function(response) {
-                $scope.employees = response.data;
+                if (response.data.length > 0) {
+                    $scope.employees = response.data;
+                }
+                else {
+                    $scope.resetEmployees();
+                }
+            });
+
+    };
+
+    $scope.resetEmployees = function() {
+        $http.get("http://home.tamk.fi/~kujesa/webjatko/rest/reset.php")
+            .then(function(r) {
+                $scope.initEmployees();
             });
     };
 
@@ -35,15 +48,17 @@ myApp.controller("employeesController", function($scope, $http) {
     };
 
     $scope.removeEmployee = function(employee) {
-        $http.post($scope.apiUrl + "/deleteEmployee", employee)
-            .then(
-                function success(response) {
-                    $scope.initEmployees();
-                },
-                function errorCallback(response){
-                    console.log("API Error");
-                    console.log(response);
-                });
+        $http.post("http://home.tamk.fi/~kujesa/webjatko/rest/index.php/deleteEmployee", {"id": employee.id}, {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }).then(function(r) {
+            $scope.initEmployees();
+        },
+        function(r) {
+            console.log("API Error");
+            console.log(r);
+        });
     };
 });
 
@@ -89,6 +104,5 @@ myApp.controller("appController", function($scope, $http){
     };
 
     $scope.apiUrl = "http://home.tamk.fi/~kujesa/webjatko/rest/index.php";
-
 
 });
