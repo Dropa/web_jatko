@@ -32,7 +32,7 @@
             <button type="button" class='btn btn-group btn-warning' data-toggle="modal" data-target="#updateEmployee" ng-click="getUpEmployee(employee.id)">
                 <span class='glyphicon glyphicon-pencil'></span> Muokkaa
             </button>
-            <button class='btn btn-group btn-danger' ng-click="removeEmployee(employee)">
+            <button type="button" class='btn btn-group btn-danger' data-toggle="modal" data-target="#removeEmployee" ng-click="getRemovePrompt(employee)">
                 <span class='glyphicon glyphicon-minus'></span> Poista
             </button>
         </td>
@@ -148,7 +148,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="updateEmployeeLabel">Lisää Työntekijä</h4>
+                <h4 class="modal-title" id="updateEmployeeLabel">Päivitä Työntekijä</h4>
             </div>
             <form class="simple-form">
                 <div class="modal-body" id="update-employee-modal-body">
@@ -212,4 +212,25 @@
         </div>
     </div>
 </div>
-<!-- End of Add Employee Modal -->
+<!-- End of Update Employee Modal -->
+
+<!-- Remove Employee Modal -->
+<div class="modal fade" id="removeEmployee" tabindex="-1" role="dialog" aria-labelledby="Employee">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="removeEmployeeLabel">Työntekijä</h4>
+            </div>
+            <div class="modal-body" id="remove-employee-modal-body">
+                <h4>Haluatko varmasti poistaa työntekijän {{employee.fname}} {{employee.lname}}</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" ng-click="removeEmployee(employee)" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-ok"></span> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Remove Employee Modal -->

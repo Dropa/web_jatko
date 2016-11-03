@@ -106,6 +106,10 @@ myApp.controller("employeesController", function($scope, $http) {
             });
     };
 
+    $scope.getRemovePrompt = function(employee) {
+        $scope.employee = employee;
+    };
+
     $scope.removeEmployee = function(employee) {
         $http.post("http://home.tamk.fi/~kujesa/webjatko/rest/index.php/deleteEmployee", {"id": employee.id}, {
             headers : {
@@ -116,7 +120,6 @@ myApp.controller("employeesController", function($scope, $http) {
         },
         function(r) {
             console.log("API Error");
-            console.log(r);
         });
     };
 });
