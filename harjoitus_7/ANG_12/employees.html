@@ -1,0 +1,143 @@
+<div class="page-header" data-ng-init="initEmployees()">
+    <h3>Työntekijät</h3>
+</div>
+
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addEmployee">
+    <span class='glyphicon glyphicon-plus'></span> Uusi työntekijä
+</button>
+<input type="text" class="form-control" placeholder="Etsi..."/>
+<table class="table table-responsive table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Etunimi</th>
+        <th>Sukunimi</th>
+        <th>Osasto</th>
+        <th>Puhelin</th>
+        <th>Toiminnot</th>
+    </tr>
+    </thead>
+
+    <tbody id="tablebody">
+    <tr ng-repeat="employee in employees" ng-click="setEmployee(employee)">
+        <td>{{employee.id}}</td>
+        <td>{{employee.fname}}</td>
+        <td>{{employee.lname}}</td>
+        <td>{{employee.dname}}</td>
+        <td>{{employee.phone1}}</td>
+        <td>
+            <button type="button" class="btn btn-group btn-info" data-toggle="modal" data-target="#showEmployee" ng-click="showEmployee(employee.id)">
+                <span class='glyphicon glyphicon-eye-open'></span> Näytä
+            </button>
+            <button class='btn btn-group btn-warning'>
+                <span class='glyphicon glyphicon-pencil'></span> Muokkaa
+            </button>
+            <button class='btn btn-group btn-danger' ng-click="removeEmployee(employee)">
+                <span class='glyphicon glyphicon-minus'></span> Poista
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Show Employee Modal -->
+<div class="modal fade" id="showEmployee" tabindex="-1" role="dialog" aria-labelledby="Employee">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="showEmployeeLabel">Työntekijä</h4>
+            </div>
+            <div class="modal-body" id="employee-modal-body">
+                <p><b>ID:</b> {{employee.id}}</p>
+                <p><b>Etunimi:</b> {{employee.fname}}</p>
+                <p><b>Sukunimi:</b> {{employee.lname}}</p>
+                <p><b>Osasto:</b> {{employee.dname}} ({{employee.dep}})</p>
+                <p><b>Syntymäpäivä:</b> {{employee.bdate}}</p>
+                <p><b>E-mail:</b> {{employee.email}}</p>
+                <p><b>Palkka:</b> {{employee.salary}}</p>
+                <p><b>Puhelin 1:</b> {{employee.phone1}}</p>
+                <p><b>Puhelin 2:</b> {{employee.phone2}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-ok"></span> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Show Employee Modal -->
+
+<!-- Add Employee Modal -->
+<div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="Employee">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addEmployeeLabel">Lisää Työntekijä</h4>
+            </div>
+            <form class="simple-form">
+                <div class="modal-body" id="add-employee-modal-body">
+                    <div class="form-group row">
+                        <label for="add-employee-id" class="col-xs-2 col-form-label">ID:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="number" id="add-employee-id" ng-model="addemployee.id"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-fname" class="col-xs-2 col-form-label">Etunimi:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" id="add-employee-fname" ng-model="addemployee.fname"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-lname" class="col-xs-2 col-form-label">Sukunimi:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" id="add-employee-lname" ng-model="addemployee.lname"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-salary" class="col-xs-2 col-form-label">Palkka:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="number" id="add-employee-salary" ng-model="addemployee.salary"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-bdate" class="col-xs-2 col-form-label">Syntymäpäivä:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="date" id="add-employee-bdate" ng-model="addemployee.bdate"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-email" class="col-xs-2 col-form-label">Sähköposti:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" id="add-employee-email" ng-model="addemployee.email"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-dep" class="col-xs-2 col-form-label">Osasto:</label>
+                        <div class="col-xs-10">
+                            <select class="form-control" ng-options="department as department.name for department in departments track by department.id" id="add-employee-dep" ng-model="addemployee.dep"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-phone1" class="col-xs-2 col-form-label">Puhelin 1:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="number" id="add-employee-phone1" ng-model="addemployee.phone1"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="add-employee-phone2" class="col-xs-2 col-form-label">Puhelin 2:</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="number" id="add-employee-phone2" ng-model="addemployee.phone2"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" data-dismiss="modal" ng-click="addEmployee(addemployee)" value="Lisää">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End of Add Employee Modal -->

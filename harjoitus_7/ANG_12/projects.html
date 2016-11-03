@@ -1,0 +1,74 @@
+<div class="page-header"  data-ng-init="initProjects()">
+    <h3>Projektit</h3>
+</div>
+
+<button type="button" class="btn btn-success">
+    <span class="glyphicon glyphicon-plus"></span> Uusi projekti
+</button>
+<input type="text" class="form-control" placeholder="Etsi..."/>
+
+<table class="table table-responsive table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Projekti</th>
+        <th>Manageri</th>
+        <th>Toiminnot</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="project in projects">
+        <td>{{project.id}}</td>
+        <td>{{project.name}}</td>
+        <td>{{project.fname}} {{project.lname}}</td>
+        <td>
+            <button type="button" class="btn btn-group btn-info" ng-click="showProject(project.id)" data-toggle="modal" data-target="#showProject">
+            <span class="glyphicon glyphicon-eye-open"></span> Näytä
+            </button>
+            <button class="btn btn-warning">
+                <span class="glyphicon glyphicon-pencil"></span> Muokkaa
+            </button>
+            <button class="btn btn-danger">
+                <span class="glyphicon glyphicon-minus"></span> Poista
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="showProject" tabindex="-1" role="dialog" aria-labelledby="Project">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Projekti</h4>
+            </div>
+            <div class="modal-body" id="employee-modal-body">
+                <table class="table table-bordered table-responsive" ng-show="project.length">
+                    <thead>
+                    <tr>
+                        <th>Työntekijän ID</th>
+                        <th>Nimi</th>
+                        <th>Tunnit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="participant in project">
+                        <td>{{participant.id}}</td>
+                        <td>{{participant.fname}} {{participant.lname}}</td>
+                        <td>{{participant.hours}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="alert alert-danger" ng-hide="project.length">Ei osallistujia</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-ok"></span> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->
